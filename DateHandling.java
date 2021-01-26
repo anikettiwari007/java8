@@ -1,7 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
@@ -52,14 +51,6 @@ class DateHandling{
 				else{
 					System.out.println("Data inserted successfully.");
 				}
-					
-				// while (rs.next()) {
-				// 	long id = rs.getLong("ID");
-				// 	String name = rs.getString("FIRST_NAME");
-				// 	String lastName = rs.getString("LAST_NAME");
-		
-				// 	// do something with the extracted data...
-				// }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		

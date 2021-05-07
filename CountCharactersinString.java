@@ -1,4 +1,7 @@
 import java.util.HashMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CountCharactersinString {
 
@@ -18,7 +21,18 @@ public class CountCharactersinString {
 			}
 		}
 		
-		map.entrySet().stream().map(e -> e.getKey()+ ": "+e.getValue()).forEach(System.out::println);
+		//map.entrySet().stream().map(e -> e.getKey()+ ": "+e.getValue()).forEach(System.out::println);
+		
+		
+		Stream
+		.of(str.split(" "))
+		.flatMap(tempString -> tempString.chars().mapToObj(ch -> (char) ch))
+		.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+		.entrySet()
+		.stream()
+		.map(e -> e.getKey()+" "+e.getValue())
+		.forEach(System.out::println);
+				
 	}
 
 }

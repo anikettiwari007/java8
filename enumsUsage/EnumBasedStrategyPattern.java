@@ -11,8 +11,15 @@ import enumsUsage.enums.Operation;
 public class EnumBasedStrategyPattern {
     public static void main(String[] args) {
         int x = 10, y=5;
-        for (Operation operation : Operation.values()){
-            System.out.printf("%d %s %d = %d%n", x, operation.name(), y, operation.apply(x, y));
+        Operation operation = fromString("add");
+        System.out.println(operation.apply(x, y));
+    }
+
+    public static Operation fromString(String operationName) {
+        try {
+            return Operation.valueOf(operationName.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new UnsupportedOperationException("unsupported operation: " + operationName);
         }
     }
 }
